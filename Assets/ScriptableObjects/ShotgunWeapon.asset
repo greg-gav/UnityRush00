@@ -17,3 +17,6 @@ MonoBehaviour:
   name: Shotgun
   hasAmmo: 1
   ammoSize: 4
+  damage: 0
+  attackCoolDown: 1
+  projectile: {fileID: 0}

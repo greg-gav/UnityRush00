@@ -17,3 +17,6 @@ MonoBehaviour:
   name: Uzi
   hasAmmo: 1
   ammoSize: 25
+  damage: 10
+  attackCoolDown: 0.1
+  projectile: {fileID: 0}

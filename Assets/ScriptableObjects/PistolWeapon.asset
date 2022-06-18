@@ -17,3 +17,6 @@ MonoBehaviour:
   name: Pistol
   hasAmmo: 1
   ammoSize: 6
+  damage: 0
+  attackCoolDown: 0.5
+  projectile: {fileID: 0}

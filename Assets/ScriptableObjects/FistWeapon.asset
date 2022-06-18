@@ -17,3 +17,6 @@ MonoBehaviour:
   name: Fist
   hasAmmo: 0
   ammoSize: 0
+  damage: 50
+  attackCoolDown: 0.1
+  projectile: {fileID: 0}

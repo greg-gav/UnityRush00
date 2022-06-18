@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
@@ -6,22 +7,22 @@ public class WeaponManager : MonoBehaviour
 	[SerializeField] private BoxCollider2D meleeCollider;
 	private SpriteRenderer _weaponSprite;
 	private WeaponBase _currentWeapon;
+	private bool _isAttacking;
+	private WaitForSeconds _attackCd;
 
 	private void Awake()
 	{
 		_weaponSprite = GetComponent<SpriteRenderer>();
 		_currentWeapon = starterWeapon;
 		_weaponSprite.sprite = _currentWeapon.equippedSprite;
+		_attackCd = new WaitForSeconds(_currentWeapon.attackCoolDown);
 	}
 
 	private void Update()
 	{
-		if (Input.GetMouseButtonDown(0))
+		if (Input.GetMouseButtonDown(0) && !_isAttacking)
 		{
-			if (_currentWeapon.hasAmmo)
-				_currentWeapon.Shoot();
-			else
-				_currentWeapon.Smash(meleeCollider);
+			StartCoroutine(Attack());
 		}
 
 		if (Input.GetMouseButtonDown(1) && _currentWeapon != starterWeapon)
@@ -40,5 +41,22 @@ public class WeaponManager : MonoBehaviour
 
 		_currentWeapon = weapon;
 		_weaponSprite.sprite = _currentWeapon.equippedSprite;
+		_attackCd = new WaitForSeconds(_currentWeapon.attackCoolDown);
+	}
+
+	private IEnumerator Attack()
+	{
+		_isAttacking = true;
+		if (_currentWeapon.hasAmmo)
+			_currentWeapon.Shoot();
+		else
+		{
+			meleeCollider.gameObject.SetActive(true);
+			_currentWeapon.Smash(meleeCollider);
+		}
+
+		yield return _attackCd;
+		meleeCollider.gameObject.SetActive(false);
+		_isAttacking = false;
 	}
 }
