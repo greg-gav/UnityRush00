@@ -2,16 +2,16 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
-	public static GameManager instance;
+	public static GameManager Instance;
+	public WeaponManager weaponManager;
 
 	private void Start()
 	{
-		if (instance == null)
+		if (Instance == null)
 		{
-			instance = this;
+			Instance = this;
 		}
-		else if (instance == this)
+		else if (Instance == this)
 		{
 			Destroy(gameObject);
 		}

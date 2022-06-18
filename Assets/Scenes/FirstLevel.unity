@@ -703,6 +703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f72242c163b74fa2875d4ddc03ab2c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponManager: {fileID: 2047608504}
 --- !u!4 &1807175505
 Transform:
   m_ObjectHideFlags: 0
@@ -718,6 +719,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2047608501 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8014771989157339650, guid: c38bada606ccf4989a38d009bf403ba7, type: 3}
+  m_PrefabInstance: {fileID: 8014771987177366711}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2047608504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047608501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ac666451743844a5a44af4d0232ac55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  starterWeapon: {fileID: 11400000, guid: c898a039cda1644b8a2be0b3246d7c58, type: 2}
 --- !u!1001 &8014771987177366711
 PrefabInstance:
   m_ObjectHideFlags: 0

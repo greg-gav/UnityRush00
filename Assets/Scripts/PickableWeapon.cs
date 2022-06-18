@@ -18,12 +18,18 @@ public class PickableWeapon : MonoBehaviour
 	private void OnTriggerEnter2D(Collider2D col)
 	{
 		if (col.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
-			Debug.Log("PickWeapon");
+		{
+			GameManager.Instance.weaponManager.ChangeWeapon(weaponBase);
+			Destroy(gameObject);
+		}
 	}
 
 	private void OnTriggerStay2D(Collider2D other)
 	{
 		if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
-			Debug.Log("PickWeapon");
+		{
+			GameManager.Instance.weaponManager.ChangeWeapon(weaponBase);
+			Destroy(gameObject);
+		}
 	}
 }
