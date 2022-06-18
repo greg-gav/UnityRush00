@@ -19,4 +19,4 @@ MonoBehaviour:
   ammoSize: 4
   damage: 0
   attackCoolDown: 1
-  projectile: {fileID: 0}
+  projectile: {fileID: 1941460323702348289, guid: 6fdc67cc9b2b84e63831ae345616b021, type: 3}

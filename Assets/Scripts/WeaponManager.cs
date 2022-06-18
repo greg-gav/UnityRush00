@@ -5,6 +5,7 @@ public class WeaponManager : MonoBehaviour
 {
 	[SerializeField] private WeaponBase starterWeapon;
 	[SerializeField] private BoxCollider2D meleeCollider;
+	[SerializeField] private Transform bulletSpawn;
 	private SpriteRenderer _weaponSprite;
 	private WeaponBase _currentWeapon;
 	private bool _isAttacking;
@@ -48,7 +49,10 @@ public class WeaponManager : MonoBehaviour
 	{
 		_isAttacking = true;
 		if (_currentWeapon.hasAmmo)
+		{
+			Instantiate(_currentWeapon.projectile, bulletSpawn.position, bulletSpawn.rotation);
 			_currentWeapon.Shoot();
+		}
 		else
 		{
 			meleeCollider.gameObject.SetActive(true);
