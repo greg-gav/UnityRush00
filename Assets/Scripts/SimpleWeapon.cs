@@ -5,7 +5,11 @@ public class SimpleWeapon : WeaponBase
 {
 	public override void Shoot()
 	{
-		if (hasAmmo)
-			Debug.Log("PEW PEW");
+		Debug.Log("PEW PEW");
+	}
+
+	public override void Smash(BoxCollider2D collider2D)
+	{
+		Debug.Log("SMASH");
 	}
 }

@@ -3,6 +3,7 @@ using UnityEngine;
 public class WeaponManager : MonoBehaviour
 {
 	[SerializeField] private WeaponBase starterWeapon;
+	[SerializeField] private BoxCollider2D meleeCollider;
 	private SpriteRenderer _weaponSprite;
 	private WeaponBase _currentWeapon;
 
@@ -16,7 +17,13 @@ public class WeaponManager : MonoBehaviour
 	private void Update()
 	{
 		if (Input.GetMouseButtonDown(0))
-			_currentWeapon.Shoot();
+		{
+			if (_currentWeapon.hasAmmo)
+				_currentWeapon.Shoot();
+			else
+				_currentWeapon.Smash(meleeCollider);
+		}
+
 		if (Input.GetMouseButtonDown(1) && _currentWeapon != starterWeapon)
 		{
 			ChangeWeapon(starterWeapon);

@@ -11,4 +11,5 @@ public abstract class WeaponBase : ScriptableObject
 	public GameObject projectile;
 
 	public abstract void Shoot();
+	public abstract void Smash(BoxCollider2D collider2D);
 }
