@@ -23,6 +23,12 @@ public class WeaponManager : MonoBehaviour
 
 	public void ChangeWeapon(WeaponBase weapon)
 	{
+		if (_currentWeapon != starterWeapon)
+		{
+			Instantiate(Resources.Load($"{_currentWeapon.name}"), transform.position,
+				Quaternion.identity);
+		}
+
 		_currentWeapon = weapon;
 		_weaponSprite.sprite = _currentWeapon.equippedSprite;
 	}
