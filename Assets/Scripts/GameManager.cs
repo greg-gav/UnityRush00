@@ -1,9 +1,18 @@
+using System;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+	[SerializeField] private Texture2D cursor;
 	public static GameManager Instance;
 	public WeaponManager weaponManager;
+
+	private void Awake()
+	{
+		Cursor.SetCursor(cursor, Vector2.zero, CursorMode.ForceSoftware);
+	}
 
 	private void Start()
 	{
@@ -21,8 +30,27 @@ public class GameManager : MonoBehaviour
 		Initialize();
 	}
 
-	private void Initialize()
+	private static void Initialize()
 	{
 		Debug.Log("Put something here!");
+	}
+
+	public void QuitGame()
+	{
+		#if UNITY_EDITOR
+			EditorApplication.isPlaying = false;
+		#else
+			Application.Quit();
+		#endif
+	}
+
+	public void LoadNextScene()
+	{
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+	}
+
+	public void ReloadScene()
+	{
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
 }
