@@ -588,7 +588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f72242c163b74fa2875d4ddc03ab2c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursor: {fileID: 0}
+  cursor: {fileID: 2800000, guid: ac9305ea714ca4c1ea1b0dda620c09f9, type: 3}
   weaponManager: {fileID: 2047608504}
 --- !u!4 &1807175505
 Transform:

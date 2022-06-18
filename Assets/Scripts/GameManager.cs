@@ -8,10 +8,12 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private Texture2D cursor;
 	public static GameManager Instance;
 	public WeaponManager weaponManager;
+	private Vector2 _cursorHotspot;
 
 	private void Awake()
 	{
-		Cursor.SetCursor(cursor, Vector2.zero, CursorMode.ForceSoftware);
+		_cursorHotspot = new Vector2 (cursor.width / 2, cursor.height / 2);
+		Cursor.SetCursor(cursor, _cursorHotspot, CursorMode.ForceSoftware);
 	}
 
 	private void Start()
