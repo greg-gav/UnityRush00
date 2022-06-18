@@ -344,8 +344,8 @@ GameObject:
   - component: {fileID: 800652938}
   - component: {fileID: 800652935}
   m_Layer: 0
-  m_Name: PlayerTest
-  m_TagString: Untagged
+  m_Name: EnemyTest
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

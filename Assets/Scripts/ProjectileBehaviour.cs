@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
@@ -19,10 +16,12 @@ public class ProjectileBehaviour : MonoBehaviour
 		transform.Translate(Vector2.up * (projectileSpeed * Time.deltaTime));
 	}
 
-	private void OnTriggerEnter2D(Collider2D col)
+	private void OnCollisionEnter2D(Collision2D col)
 	{
-		if (col.CompareTag("Player") || col.CompareTag("Enemy"))
-			Debug.Log(col.tag);
+		if (col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Enemy"))
+		{
+			Debug.Log(col.gameObject.tag);
+		}
 		else
 		{
 			Destroy(gameObject);
