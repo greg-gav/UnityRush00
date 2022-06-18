@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b1e1461436714ff799417327fe8d938, type: 3}
+  m_Name: ShotgunWeapon
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: b99032e6f1f9a49e5adb932489c76376, type: 3}
+  equippedSprite: {fileID: 21300000, guid: 2775ead70e19f415884382d7d0911c04, type: 3}
+  name: Shotgun
+  hasAmmo: 1
+  ammoSize: 4
