@@ -21,6 +21,8 @@ public class ProjectileBehaviour : MonoBehaviour
 		if (col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Enemy"))
 		{
 			Debug.Log(col.gameObject.tag);
+			Destroy(gameObject);
+			Destroy(col.gameObject);
 		}
 		else
 		{
