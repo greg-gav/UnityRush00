@@ -13,6 +13,14 @@ public class WeaponManager : MonoBehaviour
 		_weaponSprite.sprite = _currentWeapon.equippedSprite;
 	}
 
+	private void Update()
+	{
+		if (Input.GetMouseButtonDown(1) && _currentWeapon != starterWeapon)
+		{
+			ChangeWeapon(starterWeapon);
+		}
+	}
+
 	public void ChangeWeapon(WeaponBase weapon)
 	{
 		_currentWeapon = weapon;
