@@ -15,6 +15,8 @@ public class WeaponManager : MonoBehaviour
 
 	private void Update()
 	{
+		if (Input.GetMouseButtonDown(0))
+			_currentWeapon.Shoot();
 		if (Input.GetMouseButtonDown(1) && _currentWeapon != starterWeapon)
 		{
 			ChangeWeapon(starterWeapon);
