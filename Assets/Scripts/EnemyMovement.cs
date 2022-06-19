@@ -55,7 +55,6 @@ public class EnemyMovement : MonoBehaviour
             if (_target == transform)
                 transform.rotation = _startRotation;
         }
-        
     }
 
     private bool GoingToSpawn()
@@ -88,16 +87,17 @@ public class EnemyMovement : MonoBehaviour
         _enemyRb.transform.eulerAngles = Vector3.forward * _enemyRotation;
     }
 
-    public void LookAt(Transform target)
+    public void GoAfter(Transform target)
     {
-        
         _target = target;
         _chaseTime = 0;
+        //start shooting here
     }
 
     public void ReturnToSpawn()
     {
         _target = transform;
         _chaseTime = 0;
+        //end shooting here
     }
 }
