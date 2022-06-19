@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -34,9 +35,14 @@ public class EnemyMovement : MonoBehaviour
     {
         Vector2 _goto = _target == transform ? _startPosition : _target.position;
         FollowTarget(_goto);
+
+        CheckTime();
+    }
+
+    private void FixedUpdate()
+    {
         Vector2 _lookat = _target == transform ? _startPosition : _target.position;
         LookAtTarget(_lookat);
-        CheckTime();
     }
 
     private void CheckTime()
