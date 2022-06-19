@@ -25,6 +25,7 @@ public class ProjectileBehaviour : MonoBehaviour
 			{
 				GameManager.Instance.PlayerAlive = false;
 				GameManager.Instance.restartScreen.SetActive(true);
+				GameManager.Instance.PlayVictoryOrDefeatSound(false);
 				Destroy(gameObject);
 			}
 			else

@@ -2368,6 +2368,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2150124961515221706, guid: c31320fb87fd2421d99d1c8528be2f56, type: 3}
+      propertyPath: defeat
+      value: 
+      objectReference: {fileID: 8300000, guid: 7faccf86862cc43bb9a5589bbb6c955f, type: 3}
+    - target: {fileID: 2150124961515221706, guid: c31320fb87fd2421d99d1c8528be2f56, type: 3}
+      propertyPath: victory
+      value: 
+      objectReference: {fileID: 8300000, guid: 3f823d776f2224f7eaa3e3ad6976db1b, type: 3}
+    - target: {fileID: 2150124961515221706, guid: c31320fb87fd2421d99d1c8528be2f56, type: 3}
       propertyPath: rWeapons
       value: 
       objectReference: {fileID: 1693907957}

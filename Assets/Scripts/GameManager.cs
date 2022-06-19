@@ -2,20 +2,25 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(AudioSource))]
 public class GameManager : MonoBehaviour
 {
 	[SerializeField] private Texture2D cursor;
+	[SerializeField] private AudioClip victory;
+	[SerializeField] private AudioClip defeat;
 	public GameObject restartScreen;
 	public RandomizeWeapon rWeapons;
 	public static GameManager Instance;
 	public WeaponManager weaponManager;
 	private Vector2 _cursorHotspot;
+	private AudioSource _audioSource;
 	public bool PlayerAlive { get; set; }
 
 	private void Awake()
 	{
 		_cursorHotspot = new Vector2 (cursor.width / 2, cursor.height / 2);
 		Cursor.SetCursor(cursor, _cursorHotspot, CursorMode.ForceSoftware);
+		_audioSource = GetComponent<AudioSource>();
 	}
 
 	private void Start()
@@ -56,5 +61,14 @@ public class GameManager : MonoBehaviour
 	public void ReloadScene()
 	{
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+	}
+
+	public void PlayVictoryOrDefeatSound(bool areYouWinningSon)
+	{
+		if (areYouWinningSon)
+			_audioSource.clip = victory;
+		else
+			_audioSource.clip = defeat;
+		_audioSource.Play();
 	}
 }
