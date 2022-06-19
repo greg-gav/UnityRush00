@@ -33308,6 +33308,10 @@ PrefabInstance:
       value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8014771988624017730, guid: c38bada606ccf4989a38d009bf403ba7, type: 3}
+      propertyPath: finishScreen
+      value: 
+      objectReference: {fileID: 260658993}
+    - target: {fileID: 8014771988624017730, guid: c38bada606ccf4989a38d009bf403ba7, type: 3}
       propertyPath: deathSound.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 621614616}

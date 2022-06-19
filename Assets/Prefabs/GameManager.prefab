@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2150124961515221707}
   - component: {fileID: 2150124961515221706}
+  - component: {fileID: 1693907957}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -45,4 +46,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursor: {fileID: 2800000, guid: ac9305ea714ca4c1ea1b0dda620c09f9, type: 3}
+  victory: {fileID: 8300000, guid: 3f823d776f2224f7eaa3e3ad6976db1b, type: 3}
+  defeat: {fileID: 8300000, guid: 7faccf86862cc43bb9a5589bbb6c955f, type: 3}
+  restartScreen: {fileID: 0}
+  rWeapons: {fileID: 1693907957}
   weaponManager: {fileID: 0}
+--- !u!114 &1693907957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2150124961515221717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c31c302f9f664478a939ddbf03768c62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons:
+  - {fileID: 11400000, guid: 0fbdd87cf18be4baa9fca891c04656c0, type: 2}
+  - {fileID: 11400000, guid: c330c69ddc15540eaaf3593b8991e800, type: 2}
+  - {fileID: 11400000, guid: 47796f810f6d64bc4abc1cd717cbf17f, type: 2}

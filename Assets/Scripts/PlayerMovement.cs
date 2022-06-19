@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] private float playerSpeed;
 	[SerializeField] private Camera mainCamera;
 	[SerializeField] private UnityEvent deathSound;
+	[SerializeField] private GameObject finishScreen;
 	private Vector2 _velocityMovement;
 	private Vector2 _mousePosition;
 	private float _playerRotation;
@@ -50,5 +51,15 @@ public class PlayerMovement : MonoBehaviour
 	private void OnDestroy()
 	{
 		deathSound?.Invoke();
+	}
+
+	private void OnTriggerEnter2D(Collider2D col)
+	{
+		if (col.CompareTag("Finish"))
+		{
+			GameManager.Instance.PlayVictoryOrDefeatSound(true);
+			finishScreen.SetActive(true);
+			GameManager.Instance.PlayerAlive = false;
+		}
 	}
 }
