@@ -16,9 +16,22 @@ public class EnemyMovement : MonoBehaviour
     private Transform _target;
     private Vector2 _lastPosition;
     private float _followTimer;
-    private Vector2 _startPosition;
+    private PatrolRoute _route;
+
+    private Vector2 WaypointPosition
+    {
+        get
+        {
+            if (_route)
+                return _route.GetNext(posDelta);
+            return _waypointPosition;
+        }
+        set => _waypointPosition = value;
+    }
+
     private Quaternion _startRotation;
     private float _chaseTime;
+    private Vector2 _waypointPosition;
     private static readonly int IsMoving = Animator.StringToHash("isWalking");
     private const float MaxChaseTime = 4f;
     private const float posDelta = 0.2f;
@@ -28,22 +41,23 @@ public class EnemyMovement : MonoBehaviour
         _enemyRb = GetComponent<Rigidbody2D>();
         _enemyTransform = GetComponent<Transform>();
         _animator = GetComponent<Animator>();
+        _route = GetComponent<PatrolRoute>();
         _enemyRb.gravityScale = 0;
-        _startPosition = transform.position;
+        WaypointPosition = transform.position;
         _startRotation = transform.rotation;
         _target = transform;
     }
 
     private void Update()
     {
-        Vector2 _goto = _target == transform ? _startPosition : _target.position;
+        Vector2 _goto = _target == transform ? WaypointPosition : _target.position;
         FollowTarget(_goto);
         CheckTime();
     }
 
     private void FixedUpdate()
     {
-        Vector2 _lookat = _target == transform ? _startPosition : _target.position;
+        Vector2 _lookat = _target == transform ? WaypointPosition : _target.position;
         LookAtTarget(_lookat);
     }
 
@@ -66,7 +80,7 @@ public class EnemyMovement : MonoBehaviour
     private bool GoingToSpawn()
     {
         if (transform == _target)
-            if (Vector2.Distance(transform.position, _startPosition) > posDelta)
+            if (Vector2.Distance(transform.position, WaypointPosition) > posDelta)
                 return true;
             else
                 StopMovement();
