@@ -1,15 +1,20 @@
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
 	[SerializeField] private float playerSpeed;
 	[SerializeField] private Camera mainCamera;
+	[SerializeField] private UnityEvent deathSound;
 	private Vector2 _velocityMovement;
 	private Vector2 _mousePosition;
 	private float _playerRotation;
 	private Transform _playerTransform;
 	private Rigidbody2D _playerRb;
+	private bool _canPlaySound;
+	private bool _soundIsPlayed;
 
 	private void Awake()
 	{
@@ -20,8 +25,18 @@ public class PlayerMovement : MonoBehaviour
 
 	private void FixedUpdate()
 	{
+		if (_canPlaySound && !_soundIsPlayed)
+		{
+			deathSound?.Invoke();
+			_canPlaySound = false;
+			_soundIsPlayed = true;
+		}
 		if (!GameManager.Instance.PlayerAlive)
+		{
+			_canPlaySound = true;
 			return;
+		}
+
 		_velocityMovement.x = Input.GetAxis("Horizontal");
 		_velocityMovement.y = Input.GetAxis("Vertical");
 
@@ -30,5 +45,10 @@ public class PlayerMovement : MonoBehaviour
 		var position = _playerTransform.position;
 		_playerRotation = Mathf.Atan2(_mousePosition.y - position.y, _mousePosition.x - position.x) * Mathf.Rad2Deg + 90;
 		_playerRb.transform.eulerAngles = Vector3.forward * _playerRotation;
+	}
+
+	private void OnDestroy()
+	{
+		deathSound?.Invoke();
 	}
 }

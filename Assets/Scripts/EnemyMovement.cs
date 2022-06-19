@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class EnemyMovement : MonoBehaviour
@@ -9,6 +11,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float baseRange;
     [SerializeField] private GameObject _enemyAlert;
     [SerializeField] private EnemyWeaponManager weaponManager;
+    [SerializeField] private UnityEvent deathSound;
     private float _enemyRotation;
     private Transform _enemyTransform;
     private Rigidbody2D _enemyRb;
@@ -167,5 +170,10 @@ public class EnemyMovement : MonoBehaviour
 	        StopCoroutine(_checkAttack);
 	        _checkAttack = null;
         }
+    }
+
+    private void OnDestroy()
+    {
+	    deathSound?.Invoke();
     }
 }

@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(CircleCollider2D), typeof(SpriteRenderer), typeof(Rigidbody2D))]
 public class PickableWeapon : MonoBehaviour
 {
 	[SerializeField] private WeaponBase weaponBase;
+	[SerializeField] private UnityEvent onPickup;
 	private CircleCollider2D _weaponCollider;
 	private SpriteRenderer _weaponSprite;
 	private bool _throwing;
@@ -37,7 +39,7 @@ public class PickableWeapon : MonoBehaviour
 		if (col.CompareTag("Player") && Input.GetKey(KeyCode.E))
 		{
 			GameManager.Instance.weaponManager.ChangeWeapon(weaponBase);
-			GetComponent<AudioSource>().Play();
+			onPickup?.Invoke();
 			Destroy(gameObject);
 		}
 	}
@@ -47,6 +49,7 @@ public class PickableWeapon : MonoBehaviour
 		if (other.CompareTag("Player") && Input.GetKey(KeyCode.E))
 		{
 			GameManager.Instance.weaponManager.ChangeWeapon(weaponBase);
+			onPickup?.Invoke();
 			Destroy(gameObject);
 		}
 	}

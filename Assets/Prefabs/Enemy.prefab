@@ -458,6 +458,21 @@ MonoBehaviour:
   baseRange: 3
   _enemyAlert: {fileID: 4381936401374703771, guid: f9259690433fd4ed58450c1c7dd8c27e, type: 3}
   weaponManager: {fileID: 781297662}
+  deathSound:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: RandomClip, Assembly-CSharp
+        m_MethodName: PlayRandom
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!95 &4699836661916618628
 Animator:
   serializedVersion: 4
