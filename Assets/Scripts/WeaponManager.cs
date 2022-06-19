@@ -21,7 +21,7 @@ public class WeaponManager : MonoBehaviour
 
 	private void Update()
 	{
-		if (Input.GetMouseButtonDown(0) && !_isAttacking)
+		if (Input.GetMouseButton(0) && !_isAttacking)
 		{
 			StartCoroutine(Attack());
 		}
