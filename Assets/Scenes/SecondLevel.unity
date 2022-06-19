@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 18816931}
   m_Layer: 0
   m_Name: Wall (7)
-  m_TagString: EditorOnly
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 218948077}
   m_Layer: 0
   m_Name: Wall (1)
-  m_TagString: EditorOnly
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -497,7 +497,7 @@ GameObject:
   - component: {fileID: 520604365}
   m_Layer: 0
   m_Name: Wall (10)
-  m_TagString: EditorOnly
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -608,7 +608,7 @@ GameObject:
   - component: {fileID: 552592616}
   m_Layer: 0
   m_Name: Wall (5)
-  m_TagString: EditorOnly
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -719,7 +719,7 @@ GameObject:
   - component: {fileID: 628962766}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: EditorOnly
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -835,7 +835,7 @@ GameObject:
   - component: {fileID: 721422170}
   m_Layer: 0
   m_Name: Wall (3)
-  m_TagString: EditorOnly
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1129,7 +1129,7 @@ GameObject:
   - component: {fileID: 1171263558}
   m_Layer: 0
   m_Name: Wall (8)
-  m_TagString: EditorOnly
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1240,7 +1240,7 @@ GameObject:
   - component: {fileID: 1377566613}
   m_Layer: 0
   m_Name: Wall (2)
-  m_TagString: EditorOnly
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1351,7 +1351,7 @@ GameObject:
   - component: {fileID: 1847029991}
   m_Layer: 0
   m_Name: Wall (4)
-  m_TagString: EditorOnly
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1462,7 +1462,7 @@ GameObject:
   - component: {fileID: 1971807787}
   m_Layer: 0
   m_Name: Wall (9)
-  m_TagString: EditorOnly
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

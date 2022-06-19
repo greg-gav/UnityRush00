@@ -10,7 +10,7 @@ public class EnemyVision : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && !Blocked(other))
+        if (other.gameObject.CompareTag("Player") && !Blocked(other))
             _movement.LookAt(other.transform);
     }
     
@@ -29,10 +29,8 @@ public class EnemyVision : MonoBehaviour
         Debug.DrawRay(transform.position, dir, Color.red, 10.0f);
         int i = 0;
         while (i < hits.Length && (hits[i].transform.CompareTag("Enemy")))
-        {
             ++i;
-        }
-        
+
         if (i == hits.Length)
             return true;
         var blocked = !hits[i].collider.gameObject.CompareTag("Player");
