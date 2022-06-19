@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 	[SerializeField] private Texture2D cursor;
+	public GameObject restartScreen;
 	public RandomizeWeapon rWeapons;
 	public static GameManager Instance;
 	public WeaponManager weaponManager;

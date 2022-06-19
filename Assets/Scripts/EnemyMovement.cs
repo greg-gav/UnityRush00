@@ -162,7 +162,10 @@ public class EnemyMovement : MonoBehaviour
         _chaseTime = 0;
         //end shooting here
         isAttacking = false;
-        StopCoroutine(_checkAttack);
-        _checkAttack = null;
+        if (_checkAttack != null)
+        {
+	        StopCoroutine(_checkAttack);
+	        _checkAttack = null;
+        }
     }
 }
