@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 	[SerializeField] private Texture2D cursor;
+	public RandomizeWeapon rWeapons;
 	public static GameManager Instance;
 	public WeaponManager weaponManager;
 	private Vector2 _cursorHotspot;
@@ -26,7 +27,6 @@ public class GameManager : MonoBehaviour
 			Destroy(gameObject);
 		}
 		
-		DontDestroyOnLoad(gameObject);
 		
 		Initialize();
 	}

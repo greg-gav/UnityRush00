@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -9,6 +8,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float enemySpeed;
     [SerializeField] private float baseRange;
     [SerializeField] private GameObject _enemyAlert;
+    [SerializeField] private EnemyWeaponManager weaponManager;
     private float _enemyRotation;
     private Transform _enemyTransform;
     private Rigidbody2D _enemyRb;
@@ -17,6 +17,7 @@ public class EnemyMovement : MonoBehaviour
     private Vector2 _lastPosition;
     private float _followTimer;
     private PatrolRoute _route;
+    private Coroutine _checkAttack;
 
     private Vector2 WaypointPosition
     {
@@ -35,6 +36,7 @@ public class EnemyMovement : MonoBehaviour
     private static readonly int IsMoving = Animator.StringToHash("isWalking");
     private const float MaxChaseTime = 4f;
     private const float posDelta = 0.2f;
+    private bool isAttacking;
 
     private void Awake()
     {
@@ -125,6 +127,13 @@ public class EnemyMovement : MonoBehaviour
             //start shooting here
             StartCoroutine(ShowAlert());
         }
+
+        if (!isAttacking && _target != transform)
+        {
+	        Debug.Log("StartAttack!");
+	        _checkAttack = StartCoroutine(weaponManager.Attack());
+	        isAttacking = true;
+        }
     }
 
     private IEnumerator ShowAlert()
@@ -139,5 +148,6 @@ public class EnemyMovement : MonoBehaviour
         _target = transform;
         _chaseTime = 0;
         //end shooting here
+        isAttacking = false;
     }
 }

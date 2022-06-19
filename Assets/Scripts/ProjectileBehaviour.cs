@@ -26,6 +26,7 @@ public class ProjectileBehaviour : MonoBehaviour
 		}
 		else
 		{
+			Debug.Log(col.gameObject.name);
 			Destroy(gameObject);
 		}
 	}

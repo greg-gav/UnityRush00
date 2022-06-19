@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 1466515721565390060}
   - component: {fileID: 1466515721565390051}
   - component: {fileID: 4429105297624016974}
-  m_Layer: 0
-  m_Name: UziBullet
+  m_Layer: 6
+  m_Name: EnemyUziBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

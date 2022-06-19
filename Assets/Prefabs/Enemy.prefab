@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &488861597
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 488861598}
+  m_Layer: 7
+  m_Name: BulletSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &488861598
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488861597}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalPosition: {x: 0, y: -0.34, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8014771989157339649}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!1 &2085764562249328536
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,7 +42,7 @@ GameObject:
   - component: {fileID: 709500040585704925}
   - component: {fileID: 1386243903693311076}
   - component: {fileID: 8741011407584097726}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Vision
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -81,7 +112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8014771987642657145}
   - component: {fileID: 8014771987642657144}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Legs
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -165,7 +196,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8014771987770434460}
   - component: {fileID: 8014771987770434459}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Head
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -249,7 +280,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8014771987848511396}
   - component: {fileID: 8014771987848511395}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -337,7 +368,7 @@ GameObject:
   - component: {fileID: 781297661}
   - component: {fileID: 4699836661916618628}
   - component: {fileID: 7503401063398300596}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -426,6 +457,7 @@ MonoBehaviour:
   enemySpeed: 2
   baseRange: 3
   _enemyAlert: {fileID: 4381936401374703771, guid: f9259690433fd4ed58450c1c7dd8c27e, type: 3}
+  weaponManager: {fileID: 781297662}
 --- !u!95 &4699836661916618628
 Animator:
   serializedVersion: 4
@@ -485,7 +517,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8014771989157339649}
   - component: {fileID: 8014771989157339648}
-  m_Layer: 0
+  - component: {fileID: 781297662}
+  - component: {fileID: 781297664}
+  m_Layer: 7
   m_Name: Weapon
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -503,7 +537,8 @@ Transform:
   m_LocalPosition: {x: -0.063, y: -0.297, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 488861598}
   m_Father: {fileID: 8014771988624017732}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -559,3 +594,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &781297662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8014771989157339650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2c439700967415f88e26a7e12ac157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSpawn: {fileID: 488861598}
+--- !u!114 &781297664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8014771989157339650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c31c302f9f664478a939ddbf03768c62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons:
+  - {fileID: 11400000, guid: 72c0debd6f3504d52ac14245b322f07d, type: 2}
+  - {fileID: 11400000, guid: a54ea32448df446b3a9a8fd754420e60, type: 2}
+  - {fileID: 11400000, guid: 6e93edb93a85048e3b59a82d9188bc94, type: 2}
