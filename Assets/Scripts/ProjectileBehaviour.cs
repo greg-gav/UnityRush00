@@ -20,9 +20,17 @@ public class ProjectileBehaviour : MonoBehaviour
 	{
 		if (col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Enemy"))
 		{
-			Debug.Log(col.gameObject.tag);
-			Destroy(gameObject);
-			Destroy(col.gameObject);
+			if (col.gameObject.CompareTag("Player"))
+			{
+				GameManager.Instance.PlayerAlive = false;
+				Destroy(gameObject);
+			}
+			else
+			{
+				Destroy(gameObject);
+				Destroy(col.gameObject);
+			}
+
 		}
 		else
 		{
