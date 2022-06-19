@@ -23,6 +23,7 @@ public class ProjectileBehaviour : MonoBehaviour
 			if (col.gameObject.CompareTag("Player"))
 			{
 				GameManager.Instance.PlayerAlive = false;
+				GameManager.Instance.restartScreen.SetActive(true);
 				Destroy(gameObject);
 			}
 			else
