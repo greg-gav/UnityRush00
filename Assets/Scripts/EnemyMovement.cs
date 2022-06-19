@@ -12,12 +12,14 @@ public class EnemyMovement : MonoBehaviour
     private float _enemyRotation;
     private Transform _enemyTransform;
     private Rigidbody2D _enemyRb;
+    private Animator _animator;
     private Transform _target;
     private Vector2 _lastPosition;
     private float _followTimer;
     private Vector2 _startPosition;
     private Quaternion _startRotation;
     private float _chaseTime;
+    private static readonly int IsMoving = Animator.StringToHash("isWalking");
     private const float MaxChaseTime = 4f;
     private const float posDelta = 0.2f;
 
@@ -25,6 +27,7 @@ public class EnemyMovement : MonoBehaviour
     {
         _enemyRb = GetComponent<Rigidbody2D>();
         _enemyTransform = GetComponent<Transform>();
+        _animator = GetComponent<Animator>();
         _enemyRb.gravityScale = 0;
         _startPosition = transform.position;
         _startRotation = transform.rotation;
@@ -35,7 +38,6 @@ public class EnemyMovement : MonoBehaviour
     {
         Vector2 _goto = _target == transform ? _startPosition : _target.position;
         FollowTarget(_goto);
-
         CheckTime();
     }
 
@@ -58,28 +60,30 @@ public class EnemyMovement : MonoBehaviour
         if (Vector2.Distance(transform.position, pos) > baseRange || GoingToSpawn())
             ApproachTarget(pos);
         else
-        {
-            _enemyRb.velocity = Vector2.zero;
-            if (_target == transform)
-                transform.rotation = _startRotation;
-        }
+            StopMovement();
     }
-
+    
     private bool GoingToSpawn()
     {
         if (transform == _target)
             if (Vector2.Distance(transform.position, _startPosition) > posDelta)
                 return true;
             else
-            {
-                transform.rotation = _startRotation;
-                _enemyRb.velocity = Vector2.zero;
-            }
+                StopMovement();
         return false;
+    }
+
+    private void StopMovement()
+    {
+        _animator.SetBool(IsMoving, false);
+        _enemyRb.velocity = Vector2.zero;
+        if (_target == transform)
+            transform.rotation = _startRotation;
     }
 
     private void ApproachTarget(Vector2 pos)
     {
+        _animator.SetBool(IsMoving, true);
         var dir = (pos - (Vector2) transform.position);
         if (dir.magnitude > posDelta)
             _enemyRb.velocity = new Vector2(dir.normalized.x, dir.normalized.y) * enemySpeed;
