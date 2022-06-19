@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(CircleCollider2D), typeof(SpriteRenderer), typeof(Rigidbody2D))]
 public class PickableWeapon : MonoBehaviour
 {
 	[SerializeField] private WeaponBase weaponBase;
+	[SerializeField] private UnityEvent onPickup;
 	private CircleCollider2D _weaponCollider;
 	private SpriteRenderer _weaponSprite;
 	private bool _throwing;
@@ -34,18 +36,20 @@ public class PickableWeapon : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D col)
 	{
-		if (col.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
+		if (col.CompareTag("Player") && Input.GetKey(KeyCode.E))
 		{
 			GameManager.Instance.weaponManager.ChangeWeapon(weaponBase);
+			onPickup?.Invoke();
 			Destroy(gameObject);
 		}
 	}
 
 	private void OnTriggerStay2D(Collider2D other)
 	{
-		if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
+		if (other.CompareTag("Player") && Input.GetKey(KeyCode.E))
 		{
 			GameManager.Instance.weaponManager.ChangeWeapon(weaponBase);
+			onPickup?.Invoke();
 			Destroy(gameObject);
 		}
 	}

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(BoxCollider2D))]
 public class ProjectileBehaviour : MonoBehaviour
@@ -24,6 +25,7 @@ public class ProjectileBehaviour : MonoBehaviour
 			{
 				GameManager.Instance.PlayerAlive = false;
 				GameManager.Instance.restartScreen.SetActive(true);
+				GameManager.Instance.PlayVictoryOrDefeatSound(false);
 				Destroy(gameObject);
 			}
 			else
@@ -31,7 +33,6 @@ public class ProjectileBehaviour : MonoBehaviour
 				Destroy(gameObject);
 				Destroy(col.gameObject);
 			}
-
 		}
 		else
 		{

@@ -6,7 +6,7 @@ public class DontDestroyOnLoad : MonoBehaviour
      
 	void Start(){
 		music = GameObject.FindGameObjectsWithTag("gameMusic");
-		if (music[1] != null)
+		if (music.Length > 1)
 			Destroy (music[1]);
 	}
          

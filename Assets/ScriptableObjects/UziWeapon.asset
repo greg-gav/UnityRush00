@@ -20,3 +20,4 @@ MonoBehaviour:
   maxAmmoSize: 200
   attackCoolDown: 0.1
   projectile: {fileID: 1466515721565390050, guid: 546fdd93875d0415d97615a56b2b1bf6, type: 3}
+  attackSound: {fileID: 8300000, guid: d27266dbeb98e4717a95f991054745c7, type: 3}

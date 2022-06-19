@@ -8,6 +8,7 @@ public class WeaponManager : MonoBehaviour
 	[SerializeField] private WeaponBase starterWeapon;
 	[SerializeField] private BoxCollider2D meleeCollider;
 	[SerializeField] private Transform bulletSpawn;
+	[SerializeField] private AudioSource _audioSource;
 	private SpriteRenderer _weaponSprite;
 	private WeaponBase _currentWeapon;
 	private bool _isAttacking;
@@ -24,12 +25,14 @@ public class WeaponManager : MonoBehaviour
 	private void Awake()
 	{
 		_weaponSprite = GetComponent<SpriteRenderer>();
+		_audioSource = GetComponent<AudioSource>();
 		_currentWeapon = starterWeapon;
 		if (!_ammos.ContainsKey(_currentWeapon.name))
 			_ammos.Add(_currentWeapon.name, _currentWeapon.maxAmmoSize);
 		_magSize = _currentWeapon.ammoSize;
 		_weaponSprite.sprite = _currentWeapon.equippedSprite;
 		_attackCd = new WaitForSeconds(_currentWeapon.attackCoolDown);
+		_audioSource.clip = _currentWeapon.attackSound;
 	}
 
 	private void Update()
@@ -64,6 +67,7 @@ public class WeaponManager : MonoBehaviour
 			_ammos.Add(_currentWeapon.name, _currentWeapon.maxAmmoSize);
 		_magSize = _currentWeapon.ammoSize;
 		_attackCd = new WaitForSeconds(_currentWeapon.attackCoolDown);
+		_audioSource.clip = _currentWeapon.attackSound;
 	}
 
 	private IEnumerator Attack()
@@ -83,12 +87,14 @@ public class WeaponManager : MonoBehaviour
 
 			_magSize--;
 			_ammos[_currentWeapon.name]--;
+			_audioSource.Play();
 			Instantiate(_currentWeapon.projectile, bulletSpawn.position, bulletSpawn.rotation);
 			_currentWeapon.Shoot();
 		}
 		else
 		{
 			meleeCollider.gameObject.SetActive(true);
+			_audioSource.Play();
 			_currentWeapon.Smash(meleeCollider);
 		}
 
