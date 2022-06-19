@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WeaponManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class WeaponManager : MonoBehaviour
 	[SerializeField] private BoxCollider2D meleeCollider;
 	[SerializeField] private Transform bulletSpawn;
 	[SerializeField] private AudioSource _audioSource;
+	[SerializeField] private Text ammoText;
 	private SpriteRenderer _weaponSprite;
 	private WeaponBase _currentWeapon;
 	private bool _isAttacking;
@@ -33,6 +35,9 @@ public class WeaponManager : MonoBehaviour
 		_weaponSprite.sprite = _currentWeapon.equippedSprite;
 		_attackCd = new WaitForSeconds(_currentWeapon.attackCoolDown);
 		_audioSource.clip = _currentWeapon.attackSound;
+		ammoText.text = _ammos[_currentWeapon.name].ToString();
+		if (_ammos[_currentWeapon.name] < 1)
+			ammoText.text = "NOPE!";
 	}
 
 	private void Update()
@@ -68,6 +73,9 @@ public class WeaponManager : MonoBehaviour
 		_magSize = _currentWeapon.ammoSize;
 		_attackCd = new WaitForSeconds(_currentWeapon.attackCoolDown);
 		_audioSource.clip = _currentWeapon.attackSound;
+		ammoText.text = _ammos[_currentWeapon.name].ToString();
+		if (_ammos[_currentWeapon.name] < 1)
+			ammoText.text = "NOPE!";
 	}
 
 	private IEnumerator Attack()
@@ -87,6 +95,9 @@ public class WeaponManager : MonoBehaviour
 
 			_magSize--;
 			_ammos[_currentWeapon.name]--;
+			ammoText.text = _ammos[_currentWeapon.name].ToString();
+			if (_ammos[_currentWeapon.name] < 1)
+				ammoText.text = "NOPE!";
 			_audioSource.Play();
 			Instantiate(_currentWeapon.projectile, bulletSpawn.position, bulletSpawn.rotation);
 			_currentWeapon.Shoot();
