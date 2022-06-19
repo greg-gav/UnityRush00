@@ -17,6 +17,6 @@ MonoBehaviour:
   name: Uzi
   hasAmmo: 1
   ammoSize: 25
-  damage: 10
+  maxAmmoSize: 200
   attackCoolDown: 0.1
   projectile: {fileID: 1466515721565390050, guid: 546fdd93875d0415d97615a56b2b1bf6, type: 3}

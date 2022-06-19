@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
@@ -10,18 +11,23 @@ public class WeaponManager : MonoBehaviour
 	private WeaponBase _currentWeapon;
 	private bool _isAttacking;
 	private WaitForSeconds _attackCd;
+	private Dictionary<string, int> _ammos = new Dictionary<string, int>();
+	private int _magSize;
 
 	private void Awake()
 	{
 		_weaponSprite = GetComponent<SpriteRenderer>();
 		_currentWeapon = starterWeapon;
+		if (!_ammos.ContainsKey(_currentWeapon.name))
+			_ammos.Add(_currentWeapon.name, _currentWeapon.maxAmmoSize);
+		_magSize = _currentWeapon.ammoSize;
 		_weaponSprite.sprite = _currentWeapon.equippedSprite;
 		_attackCd = new WaitForSeconds(_currentWeapon.attackCoolDown);
 	}
 
 	private void Update()
 	{
-		if (Input.GetMouseButton(0) && !_isAttacking)
+		if (Input.GetMouseButton(0) && !_isAttacking && _ammos[_currentWeapon.name] != -1)
 		{
 			StartCoroutine(Attack());
 		}
@@ -42,6 +48,9 @@ public class WeaponManager : MonoBehaviour
 
 		_currentWeapon = weapon;
 		_weaponSprite.sprite = _currentWeapon.equippedSprite;
+		if (!_ammos.ContainsKey(_currentWeapon.name))
+			_ammos.Add(_currentWeapon.name, _currentWeapon.maxAmmoSize);
+		_magSize = _currentWeapon.ammoSize;
 		_attackCd = new WaitForSeconds(_currentWeapon.attackCoolDown);
 	}
 
@@ -50,6 +59,18 @@ public class WeaponManager : MonoBehaviour
 		_isAttacking = true;
 		if (_currentWeapon.hasAmmo)
 		{
+			if (_magSize == 0)
+			{
+				for (var i = 0; i < 5; i++)
+				{
+					yield return _attackCd;
+				}
+
+				_magSize = _currentWeapon.ammoSize;
+			}
+
+			_magSize--;
+			_ammos[_currentWeapon.name]--;
 			Instantiate(_currentWeapon.projectile, bulletSpawn.position, bulletSpawn.rotation);
 			_currentWeapon.Shoot();
 		}
