@@ -34,16 +34,6 @@ public class PickableWeapon : MonoBehaviour
 		}
 	}
 
-	private void OnTriggerEnter2D(Collider2D col)
-	{
-		if (col.CompareTag("Player") && Input.GetKey(KeyCode.E))
-		{
-			GameManager.Instance.weaponManager.ChangeWeapon(weaponBase);
-			onPickup?.Invoke();
-			Destroy(gameObject);
-		}
-	}
-
 	private void OnTriggerStay2D(Collider2D other)
 	{
 		if (other.CompareTag("Player") && Input.GetKey(KeyCode.E))
