@@ -34,14 +34,7 @@ public class GameManager : MonoBehaviour
 			Destroy(gameObject);
 		}
 		
-		
-		Initialize();
 		PlayerAlive = true;
-	}
-
-	private static void Initialize()
-	{
-		Debug.Log("Put something here!");
 	}
 
 	public void QuitGame()

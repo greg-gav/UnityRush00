@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 [RequireComponent(typeof(BoxCollider2D))]
 public class ProjectileBehaviour : MonoBehaviour
@@ -36,7 +35,6 @@ public class ProjectileBehaviour : MonoBehaviour
 		}
 		else
 		{
-			Debug.Log(col.gameObject.name);
 			Destroy(gameObject);
 		}
 	}

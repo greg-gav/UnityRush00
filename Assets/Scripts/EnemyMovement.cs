@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -140,13 +139,11 @@ public class EnemyMovement : MonoBehaviour
         if (target != _target)
         {
             _target = target;
-            //start shooting here
             StartCoroutine(ShowAlert());
         }
 
         if (!isAttacking && _target != transform)
         {
-	        Debug.Log("StartAttack!");
 	        _checkAttack = StartCoroutine(weaponManager.Attack());
 	        isAttacking = true;
         }
