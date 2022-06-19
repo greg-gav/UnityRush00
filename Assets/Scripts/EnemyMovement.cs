@@ -52,7 +52,20 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
-        Vector2 _goto = _target == transform ? WaypointPosition : _target.position;
+	    if (!GameManager.Instance.PlayerAlive)
+	    {
+		    if (_checkAttack != null)
+		    {
+			    StopCoroutine(_checkAttack);
+			    _checkAttack = null;
+		    }
+
+		    _enemyRb.velocity = Vector2.zero;
+		    
+		    return;
+	    }
+
+	    Vector2 _goto = _target == transform ? WaypointPosition : _target.position;
         FollowTarget(_goto);
         CheckTime();
     }
@@ -149,5 +162,7 @@ public class EnemyMovement : MonoBehaviour
         _chaseTime = 0;
         //end shooting here
         isAttacking = false;
+        StopCoroutine(_checkAttack);
+        _checkAttack = null;
     }
 }

@@ -34,6 +34,8 @@ public class WeaponManager : MonoBehaviour
 
 	private void Update()
 	{
+		if (!GameManager.Instance.PlayerAlive)
+			return;
 		if (Input.GetMouseButton(0) && !_isAttacking && _ammos[_currentWeapon.name] != -1)
 		{
 			StartCoroutine(Attack());

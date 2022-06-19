@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
 
 	private void FixedUpdate()
 	{
+		if (!GameManager.Instance.PlayerAlive)
+			return;
 		_velocityMovement.x = Input.GetAxis("Horizontal");
 		_velocityMovement.y = Input.GetAxis("Vertical");
 

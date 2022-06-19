@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 	public static GameManager Instance;
 	public WeaponManager weaponManager;
 	private Vector2 _cursorHotspot;
+	public bool PlayerAlive { get; set; }
 
 	private void Awake()
 	{
@@ -29,6 +30,7 @@ public class GameManager : MonoBehaviour
 		
 		
 		Initialize();
+		PlayerAlive = true;
 	}
 
 	private static void Initialize()
