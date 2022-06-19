@@ -20,14 +20,13 @@ public class PlayerMovement : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		_velocityMovement.x = Input.GetAxisRaw("Horizontal");
-		_velocityMovement.y = Input.GetAxisRaw("Vertical");
-		_mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-		var position = _playerTransform.position;
-		_playerRotation = Mathf.Atan2(_mousePosition.y - position.y, _mousePosition.x - position.x) * Mathf.Rad2Deg +
-		 90;
+		_velocityMovement.x = Input.GetAxis("Horizontal");
+		_velocityMovement.y = Input.GetAxis("Vertical");
 
 		_playerRb.velocity = _velocityMovement * (playerSpeed * Time.fixedDeltaTime);
+		_mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+		var position = _playerTransform.position;
+		_playerRotation = Mathf.Atan2(_mousePosition.y - position.y, _mousePosition.x - position.x) * Mathf.Rad2Deg + 90;
 		_playerRb.transform.eulerAngles = Vector3.forward * _playerRotation;
 	}
 }

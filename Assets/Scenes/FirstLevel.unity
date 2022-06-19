@@ -473,7 +473,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -845,6 +845,10 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 8014771988624017730, guid: c38bada606ccf4989a38d009bf403ba7, type: 3}
+      propertyPath: playerSpeed
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 8014771988624017732, guid: c38bada606ccf4989a38d009bf403ba7, type: 3}
       propertyPath: m_RootOrder
       value: 4
