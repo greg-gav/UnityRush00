@@ -423,6 +423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpeed: 2
   baseRange: 3
+  _enemyAlert: {fileID: 4381936401374703771, guid: f9259690433fd4ed58450c1c7dd8c27e, type: 3}
 --- !u!1 &8014771989157339650
 GameObject:
   m_ObjectHideFlags: 0

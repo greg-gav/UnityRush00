@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -6,6 +7,7 @@ public class EnemyMovement : MonoBehaviour
 
     [SerializeField] private float enemySpeed;
     [SerializeField] private float baseRange;
+    [SerializeField] private GameObject _enemyAlert;
     private float _enemyRotation;
     private Transform _enemyTransform;
     private Rigidbody2D _enemyRb;
@@ -16,7 +18,7 @@ public class EnemyMovement : MonoBehaviour
     private Quaternion _startRotation;
     private float _chaseTime;
     private const float MaxChaseTime = 4f;
-    private const double posDelta = 0.2f;
+    private const float posDelta = 0.2f;
 
     private void Awake()
     {
@@ -72,8 +74,11 @@ public class EnemyMovement : MonoBehaviour
 
     private void ApproachTarget(Vector2 pos)
     {
-        var dir = (pos - (Vector2)transform.position).normalized;
-        _enemyRb.velocity = new Vector2(dir.x, dir.y) * enemySpeed;
+        var dir = (pos - (Vector2) transform.position);
+        if (dir.magnitude > posDelta)
+            _enemyRb.velocity = new Vector2(dir.normalized.x, dir.normalized.y) * enemySpeed;
+        else
+            _enemyRb.velocity = Vector2.zero;
     }
     
     private void LookAtTarget(Vector2 pos)
@@ -89,9 +94,20 @@ public class EnemyMovement : MonoBehaviour
 
     public void GoAfter(Transform target)
     {
-        _target = target;
         _chaseTime = 0;
-        //start shooting here
+        if (target != _target)
+        {
+            _target = target;
+            //start shooting here
+            StartCoroutine(ShowAlert());
+        }
+    }
+
+    private IEnumerator ShowAlert()
+    {
+        var alert = Instantiate(_enemyAlert, transform.position, Quaternion.identity, transform);
+        yield return new WaitForSeconds(1f);
+        Destroy(alert);
     }
 
     public void ReturnToSpawn()
