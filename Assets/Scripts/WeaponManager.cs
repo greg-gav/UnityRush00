@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
@@ -13,6 +14,12 @@ public class WeaponManager : MonoBehaviour
 	private WaitForSeconds _attackCd;
 	private Dictionary<string, int> _ammos = new Dictionary<string, int>();
 	private int _magSize;
+	private Camera _camera;
+
+	private void Start()
+	{
+		_camera = Camera.main;
+	}
 
 	private void Awake()
 	{
@@ -42,8 +49,11 @@ public class WeaponManager : MonoBehaviour
 	{
 		if (_currentWeapon != starterWeapon)
 		{
-			Instantiate(Resources.Load($"{_currentWeapon.name}"), transform.position,
+			var weaponForThrow = Instantiate(Resources.Load($"{_currentWeapon.name}"), transform.position,
 				Quaternion.identity);
+			if (_camera != null)
+				weaponForThrow.GameObject().GetComponent<PickableWeapon>().ThrowWeapon(_camera.ScreenToWorldPoint
+					(Input.mousePosition).normalized * 3);
 		}
 
 		_currentWeapon = weapon;
