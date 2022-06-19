@@ -123,23 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &405292244 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 405292244, guid: c38bada606ccf4989a38d009bf403ba7, type: 3}
-  m_PrefabInstance: {fileID: 8014771987177366711}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &405292248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 405292244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0aec64dc80e7248a1890043a2ef4b7fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &461726332
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,22 +816,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 387541953, guid: c38bada606ccf4989a38d009bf403ba7, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.95
-      objectReference: {fileID: 0}
-    - target: {fileID: 8014771988624017729, guid: c38bada606ccf4989a38d009bf403ba7, type: 3}
-      propertyPath: m_GravityScale
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8014771988624017730, guid: c38bada606ccf4989a38d009bf403ba7, type: 3}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 8014771988624017730, guid: c38bada606ccf4989a38d009bf403ba7, type: 3}
-      propertyPath: playerSpeed
-      value: 200
-      objectReference: {fileID: 0}
     - target: {fileID: 8014771988624017732, guid: c38bada606ccf4989a38d009bf403ba7, type: 3}
       propertyPath: m_RootOrder
       value: 4

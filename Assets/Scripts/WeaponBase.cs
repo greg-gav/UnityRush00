@@ -7,7 +7,7 @@ public abstract class WeaponBase : ScriptableObject
 	public new string name;
 	public bool hasAmmo;
 	public int ammoSize;
-	public int damage;
+	public int maxAmmoSize;
 	public float attackCoolDown;
 	public GameObject projectile;
 
