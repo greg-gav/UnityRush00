@@ -1,2 +1,2 @@
 # UnityRush00
-Little game jam from Unity Piscine
+Little game jam for Unity Piscine
