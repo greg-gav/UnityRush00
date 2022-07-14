@@ -1,9 +1,10 @@
 # UnityRush00
-Little Game Jam project for Unity Piscine
+Little Game Jam project for Unity Piscine  
 Hotline Miami - like top-down shooter
 
 ## Enemy simulation and random generation
 ![scene sample](sample/sample.gif)
+In engine scene view  
 
 ## Features
 - Music and audio effects
